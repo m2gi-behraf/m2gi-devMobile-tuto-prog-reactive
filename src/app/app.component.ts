@@ -5,13 +5,15 @@ import { DataUser, GithubApiService } from './github-api.service';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  usersObs: Observable<DataUser[]>;
-  
+  readonly usersObs: Observable<DataUser[]>;
+  readonly Ldeleted: Observable<DataUser[]>;
+
   constructor(private s: GithubApiService) {
     this.usersObs = s.usersObs;
+    this.Ldeleted = s.Ldeleted;
   }
 
   refresh(): void {
