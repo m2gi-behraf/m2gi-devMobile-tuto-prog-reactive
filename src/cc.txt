@@ -1,0 +1,7 @@
+    this.usersObs = combineLatest(Lall, Ldeleted.pipe( startWith([]) ) ).pipe(
+      tap( console.log ),
+      map( ([LU, LD]) => LU.filter( u => LD.indexOf(u) === -1 ) ),
+      map( L => L.slice(0, 3) ),
+      multicast( () => new BehaviorSubject([]) ),
+      refCount()
+    );
